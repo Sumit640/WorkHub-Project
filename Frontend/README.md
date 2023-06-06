@@ -1,3 +1,3 @@
-# WorkHub-Project
+# WorkHub-Project Frontend
 
-Streamlining Office Operations and Employee Experience
+Contains files related to frontend part of project.
