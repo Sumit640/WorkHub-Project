@@ -80,7 +80,7 @@ li {
   color: #fff;
   padding: 2rem;
   position: relative;
-  height: 80vh;
+  min-height: 80vh;
   width: 100vw;
 }
 
@@ -99,9 +99,9 @@ li {
 #workhub-info .workhub-info-heading {
   position: relative;
   z-index: 1;
-  width: 50%;
-  margin: 2rem 0;
-  font-size: 2.2rem;
+  width: 60%;
+  margin: 3rem 0;
+  font-size: 2.5rem;
 }
 
 /* About */
@@ -130,7 +130,7 @@ li {
 /* WorkHub Description */
 #workhub-desc {
   background: var(--light-color);
-  height: 70vh;
+  min-height: 70vh;
 }
 
 #workhub-desc .workhub-desc-heading {
@@ -157,7 +157,7 @@ li {
   border-radius: 10px;
   padding: 3rem 1rem;
   text-align: center;
-  height: 35vh;
+  min-height: 35vh;
   width: 90%;
 }
 
