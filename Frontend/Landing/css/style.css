@@ -1,0 +1,44 @@
+
+.workhub-user-profile {
+  position: relative;
+  background: #8282e9;
+  height: 55vh;
+  margin: 3rem 0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  opacity: .8;
+  font-size: 1.5rem;
+}
+
+.workhub-user-profile .workhub-user-name {
+  display: flex;
+  margin: 1rem 0;
+  
+}
+
+.workhub-user-name h2 {
+  padding: 1rem 0;
+  width: 40vw;
+}
+
+.workhub-user-name h3 {
+  display: block;
+  padding: 1.2rem 0;
+}
+
+/* Statistics */
+.workhub-userStats {
+  margin: 2rem 1rem;
+}
+
+.stats-heading {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.chart-stats {
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 60vh;
+  margin: 2rem;
+}

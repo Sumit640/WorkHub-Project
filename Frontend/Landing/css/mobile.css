@@ -1,0 +1,21 @@
+@media (max-width:600px) {
+  .workhub-user-profile {
+    font-size: 1.1rem;
+    height: 65vh;
+    margin: 2rem 0;
+  }
+
+
+  .workhub-user-profile .workhub-user-name h2 {
+    width: 60vw;
+    padding-top: 2rem;
+  }
+
+  .workhub-user-profile .workhub-user-name h3 {
+    padding: 2rem;
+  }
+
+  .workhub-userStats {
+    font-size: 1.5rem;
+  }
+}
