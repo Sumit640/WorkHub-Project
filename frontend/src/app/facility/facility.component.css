@@ -1,0 +1,38 @@
+#workhub-desc {
+  background: var(--light-color);
+  min-height: 70vh;
+}
+
+#workhub-desc .workhub-desc-heading {
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem;
+  padding: 0 2rem;
+}
+
+#workhub-desc .workhub-facilities {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0 2rem 1.5rem;
+  font-size: 2.5rem;
+}
+
+#workhub-desc .workhub-facilities .facility-name {
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 10px;
+  padding: 3rem 1rem;
+  text-align: center;
+  min-height: 35vh;
+  width: 90%;
+}
+
+#workhub-desc .workhub-facilities .facility-name:hover {
+  background: #fff;
+  color: var(--primary-color);
+  border: 5px solid var(--primary-color);
+}

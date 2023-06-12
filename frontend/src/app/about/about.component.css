@@ -1,0 +1,20 @@
+#workhub-about {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  background: var(--light-color);
+  font-size: 2rem;
+}
+
+#workhub-about .workhub-about-detail {
+  border: 2px solid var(--dark-color);
+  border-radius: 5px;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+#workhub-about .workhub-about-detail .list {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}

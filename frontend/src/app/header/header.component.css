@@ -1,0 +1,36 @@
+#workhub-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark-color);
+  padding: .5rem 0;
+  color: #fff;
+}
+
+#workhub-header .container h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-left: 2rem;
+}
+
+.workhub-nav {
+  display: flex;
+  justify-content: space-around;
+  max-width: 30vw;
+  margin: 0 3rem;
+}
+
+.workhub-nav h3 {
+  margin: 0 1rem;
+}
+
+.workhub-nav h3 a{
+  font-size: 1.5rem;
+  font-weight: 200;
+  padding-bottom: .25rem;
+}
+
+.workhub-nav h3 a:hover {
+  cursor: pointer;
+  border-bottom: #fff solid 1px;
+}

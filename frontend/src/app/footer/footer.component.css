@@ -1,0 +1,11 @@
+#workhub-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  background: var(--dark-color);
+}
+
+#workhub-footer .footer-desc p {
+  color: #fff;
+}
