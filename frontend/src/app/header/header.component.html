@@ -1,18 +1,18 @@
 <header id="workhub-header">
   <div class="container">
-    <h2><a [routerLink]="['/home']" (click)="onSelect('home')">WorkHub</a></h2>
+    <h2><a [routerLink]="['/home']">WorkHub</a></h2>
     <nav class="workhub-nav">
-      <h3 *ngIf="selectFeatureHeader !== 'home'">
-        <a [routerLink]="['/home']" (click)="onSelect('home')">Home</a>
+      <h3 routerLinkActive="active-header">
+        <a [routerLink]="['/home']">Home</a>
       </h3>
-      <h3 *ngIf="selectFeatureHeader !== 'about'">
-        <a [routerLink]="['/about']" (click)="onSelect('about')">About</a>
+      <h3 routerLinkActive="active-header">
+        <a [routerLink]="['/about']">About</a>
       </h3>
-      <h3 *ngIf="selectFeatureHeader !== 'login'">
-        <a [routerLink]="['/login']" (click)="onSelect('login')">Login</a>
+      <h3 routerLinkActive="active-header">
+        <a [routerLink]="['/login']">Login</a>
       </h3>
-      <h3 *ngIf="selectFeatureHeader !== 'register'">
-        <a [routerLink]="['/register']" (click)="onSelect('register')">Register</a>
+      <h3 routerLinkActive="active-header">
+        <a [routerLink]="['/register']">Register</a>
       </h3>
     </nav>
   </div>
