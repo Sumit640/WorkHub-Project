@@ -1,10 +1,15 @@
 <header id="workhub-header">
   <div class="container">
-    <h2><a [routerLink]="['/home']">WorkHub</a></h2>
+    <h2><a href="#" (click)="onSelect('home')">WorkHub</a></h2>
     <nav class="workhub-nav">
-      <h3><a [routerLink]="['/home']">Home</a></h3>
-      <h3><a [routerLink]="['/about']">About</a></h3>
-      <h3><a [routerLink]="['/login']">Login</a></h3>
+      <h3 *ngIf="selectFeatureHeader !== 'home'">
+        <a href="#" (click)="onSelect('home')">Home</a>
+      </h3>
+      <h3 *ngIf="selectFeatureHeader === 'home'">
+        <a href="#workhub-desc" (click)="onSelect('home')">Facilities</a>
+      </h3>
+      <h3><a href="#" (click)="onSelect('about')">About</a></h3>
+      <h3><a href="#" (click)="onSelect('login')">Login</a></h3>
     </nav>
   </div>
 </header>
