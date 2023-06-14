@@ -1,26 +1,3 @@
-<app-header 
-  (featureSelected)="displayFeature($event)"
-  [selectFeatureHeader]="selectedFeature"></app-header>
-
-  <!-- WorkHub Heading -->
-<div 
-  id="workhub-info" 
-  *ngIf="selectedFeature !== 'login'">
-  <div class="container">
-    <div class="workhub-info-heading">
-      <h1>Streamlining Office Operations and Employee Experience.</h1>
-    </div>
-  </div>
-</div>
-
-<app-login *ngIf="selectedFeature === 'login'"></app-login>
-
-<!-- WorkHub About -->
-<app-about *ngIf="selectedFeature === 'about'"></app-about>
-
-  <!-- WorkHub Facility -->
-<app-facility *ngIf="selectedFeature === 'home'"></app-facility>
-
-
-<!-- WorkHub Footer -->
+<app-header></app-header>
+  <router-outlet></router-outlet>
 <app-footer></app-footer>
