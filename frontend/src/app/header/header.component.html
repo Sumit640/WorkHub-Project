@@ -11,6 +11,9 @@
       <h3 *ngIf="selectFeatureHeader !== 'login'">
         <a [routerLink]="['/login']" (click)="onSelect('login')">Login</a>
       </h3>
+      <h3 *ngIf="selectFeatureHeader !== 'register'">
+        <a [routerLink]="['/register']" (click)="onSelect('register')">Register</a>
+      </h3>
     </nav>
   </div>
 </header>
