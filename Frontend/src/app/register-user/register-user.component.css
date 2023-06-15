@@ -1,3 +1,10 @@
+
+.invalid {
+  color:white;
+  text-align: center;
+  font-size: 1rem;
+}
+
 #workhub-register {
   position: relative;
   background: var(--primary-color);
