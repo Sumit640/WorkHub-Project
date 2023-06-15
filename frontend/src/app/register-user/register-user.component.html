@@ -1,0 +1,37 @@
+<div id="workhub-info">
+  <div id="workhub-register">
+    <div class="container workhub-grp">
+      <div class="workhub-register-heading">
+        <h2>Register at WorkHub</h2>
+      </div> 
+      <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
+        <div class="workhub-register-detail">
+          <div class="register-name">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter Name" ngModel #name="ngModel" required>
+          </div>
+          <p class="invalid" *ngIf="!name.valid && name.touched">Please Enter your Name!!</p>
+          <div class="register-name">
+            <label for="username">Username (Employee Id)</label>
+            <input type="text" name="username" id="username" placeholder="Enter Username" ngModel #username="ngModel" required>
+          </div>
+          <p class="invalid" *ngIf="!username.valid && username.touched">Please Enter the UserName!!</p>
+          <div class="register-name">
+            <label for="email">Email ID</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" ngModel #email="ngModel" required>
+          </div>
+          <p class="invalid" *ngIf="!email.valid && email.touched">Please Enter Email!!</p>
+          <div class="register-password">
+            <label for="name">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter Password" ngModel #password="ngModel" required>
+          </div>
+          <p class="invalid" *ngIf="!password.valid && password.touched">Please Enter Password!!</p>
+          <div class="register-submit">
+            <button class="btn" type="submit" value="register">Register</button>
+          </div>
+        </div>
+      </form>
+      <p class="invalid" *ngIf="!registerForm.valid && registerForm.touched">Please fill all the details!!</p>
+    </div>
+  </div>
+</div>
