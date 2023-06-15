@@ -1,0 +1,57 @@
+
+.invalid {
+  color:white;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+#workhub-register {
+  position: relative;
+  background: var(--primary-color);
+  color: #fff;
+  min-height: 70vh;
+  max-width: 50%;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+#workhub-register .workhub-register-heading h2 {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#workhub-register form .workhub-register-detail {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+.workhub-register-detail div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.workhub-register-detail div input {
+  height: 5vh;
+  border: none;
+  border-radius: 2px;
+  margin-top: 1rem;
+  padding-left: .5rem;
+}
+
+.workhub-register-detail div input:focus {
+  border: 2px solid var(--dark-color);
+  outline: none;
+  border-radius: 2px;
+}
+
+.btn {
+  width: 20vh;
+  height: 8vh !important;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  padding-right: .5rem;
+}
