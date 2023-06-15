@@ -34,10 +34,6 @@ li {
   margin: 1rem;
 }
 
-.active-header {
-  border-bottom: #fff solid 1px;
-}
-
 #workhub-info {
   background: #333;
   color: #fff;
