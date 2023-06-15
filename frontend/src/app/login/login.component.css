@@ -1,8 +1,14 @@
+.invalid {
+  color:white;
+  text-align: center;
+  font-size: 1rem;
+}
+
 #workhub-login {
   position: relative;
   background: var(--primary-color);
   color: #fff;
-  height: 70vh;
+  min-height: 70vh;
   max-width: 50%;
   margin: 1rem auto;
   border-radius: 10px;

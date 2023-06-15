@@ -4,21 +4,24 @@
       <div class="workhub-login-heading">
         <h2>Login to WorkHub</h2>
       </div> 
-      <form action="#">
+      <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
         <div class="workhub-login-detail">
           <div class="login-name">
             <label for="name">Username (Employee Id)</label>
-            <input type="text" name="name" id="name" placeholder="Enter Username">
+            <input type="text" name="name" id="name" placeholder="Enter Username" ngModel #name="ngModel" required>
           </div>
+          <p class="invalid" *ngIf="!name.valid && name.touched">Please Enter Valid username!!</p>
           <div class="login-password">
             <label for="name">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <input type="password" name="password" id="password" placeholder="Enter Password" ngModel #password="ngModel" required>
           </div>
+          <p class="invalid" *ngIf="!password.valid && password.touched">Please Enter Valid Password!!</p>
           <div class="login-submit">
-            <input class="btn" type="submit" value="Login">
+            <button class="btn" type="submit" value="Login">Login</button>
           </div>
         </div>
       </form>
+      <p class="invalid" *ngIf="!loginForm.valid && loginForm.touched">Incorrect Login Details!!</p>
     </div>
   </div>
 </div>
