@@ -4,7 +4,7 @@
       <div class="workhub-register-heading">
         <h2>Register at WorkHub</h2>
       </div> 
-      <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
+      <form (ngSubmit)="onSubmitRegister(registerForm)" #registerForm="ngForm">
         <div class="workhub-register-detail">
           <div class="register-name">
             <label for="name">Name</label>

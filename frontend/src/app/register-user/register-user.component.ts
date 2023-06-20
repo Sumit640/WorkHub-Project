@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register-user',
@@ -12,10 +13,20 @@ export class RegisterUserComponent {
   // @ViewChild('registerForm') registerForm: NgForm;
 
   constructor(private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    public authService: AuthService) {}
 
-  onSubmitRegister() {
-    
+  onSubmitRegister(form: NgForm) {
+    if(form.invalid) {
+      return;
+    }
+
+    this.authService.createUser(
+      form.value.name,
+      form.value.username,
+      form.value.email,
+      form.value.password
+    )
     alert("Successfully registered at WorkHub!!");
     this.router.navigate(['../','login'],{relativeTo: this.route});
   }

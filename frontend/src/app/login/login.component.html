@@ -4,7 +4,7 @@
       <div class="workhub-login-heading">
         <h2>Login to WorkHub</h2>
       </div> 
-      <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
+      <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
         <div class="workhub-login-detail">
           <div class="login-name">
             <label for="name">Username (Employee Id)</label>
