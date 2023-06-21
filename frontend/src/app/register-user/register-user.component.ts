@@ -21,13 +21,11 @@ export class RegisterUserComponent {
       return;
     }
 
-    this.authService.createUser(
-      form.value.name,
-      form.value.username,
-      form.value.email,
-      form.value.password
-    )
+    this.authService.createUser(form.value.name,form.value.username,form.value.role,form.value.email,form.value.password);
+
     alert("Successfully registered at WorkHub!!");
-    this.router.navigate(['../','login'],{relativeTo: this.route});
+    setTimeout(() => {
+      this.router.navigate(['../','login'],{relativeTo: this.route});
+    }, 1000);
   }
 }

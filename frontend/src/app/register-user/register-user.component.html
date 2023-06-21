@@ -16,6 +16,11 @@
             <input type="text" name="username" id="username" placeholder="Enter Username" ngModel #username="ngModel" required>
           </div>
           <p class="invalid" *ngIf="!username.valid && username.touched">Please Enter the UserName!!</p>
+          <div class="register-role">
+            <label for="role">Designation </label>
+            <input type="text" name="role" id="role" placeholder="Enter Designation" ngModel #role="ngModel" required>
+          </div>
+          <p class="invalid" *ngIf="!role.valid && role.touched">Please Enter your Designation!!</p>
           <div class="register-name">
             <label for="email">Email ID</label>
             <input type="email" name="email" id="email" placeholder="Enter Email" ngModel #email="ngModel" required>

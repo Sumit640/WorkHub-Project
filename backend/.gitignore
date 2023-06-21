@@ -29,8 +29,9 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/src/credentials
+/config
 
 # System files
 .DS_Store
 Thumbs.db
+.env
