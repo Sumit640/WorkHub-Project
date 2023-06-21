@@ -7,10 +7,10 @@
       <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
         <div class="workhub-login-detail">
           <div class="login-name">
-            <label for="name">Username (Employee Id)</label>
-            <input type="text" name="name" id="name" placeholder="Enter Username" ngModel #name="ngModel" required>
+            <label for="username">Username (Employee Id)</label>
+            <input type="text" name="username" id="username" placeholder="Enter Username" ngModel #username="ngModel" required>
           </div>
-          <p class="invalid" *ngIf="!name.valid && name.touched">Please Enter Valid username!!</p>
+          <p class="invalid" *ngIf="!username.valid && username.touched">Please Enter Valid username!!</p>
           <div class="login-password">
             <label for="name">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter Password" ngModel #password="ngModel" required>

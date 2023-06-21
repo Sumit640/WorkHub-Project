@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const config = require('../config/config');
 const bcrpyt = require('bcryptjs');
 const User = require("./models/userRegister");
+const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 3000;
+const checkAuth = require('./middleware/checkAuthentication');
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -61,6 +63,47 @@ app.post("/userRegister",(req,res,next) => {
       res.status(500).json({
         error: err.message
       });
+    });
+  });
+});
+
+// Login Route
+
+app.post("/userLogin",(req,res,next) => {
+  // console.log(req.body);
+  let fetchedUser;
+  User.findOne({employeeId: req.body.employeeId})
+  .then(user => {
+    // console.log(user);
+    if(!user) {    // if user doesn't exist
+      return res.status(401).json({
+        message: 'Authentication failed!!'
+      });
+    }
+    // user exist
+    fetchedUser = user;
+    return bcrpyt.compare(req.body.password,user.password);
+  })
+  .then(result => {
+    if(!result) {
+      return res.status(401).json({
+        message: 'Authentication failed!!'
+      });
+    }
+
+    const token = jwt.sign(
+      {employeeId: fetchedUser.employeeId,userId: fetchedUser._id},
+      config.jwt_password,
+      { expiresIn: "1h"}
+    )
+    
+    res.status(200).json({
+      token: token
+    });
+  })
+  .catch(err => {
+    return res.status(401).json({
+      message: 'Authentication failed!!'
     });
   });
 });
