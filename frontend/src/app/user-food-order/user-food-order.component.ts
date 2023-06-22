@@ -40,6 +40,7 @@ export class UserFoodOrderComponent {
 
   onOrderSubmit() {
     const newOrder = {
+      'employeeId': 'E11',
       'orderId': this.orderId,
       'orderDate': this.orderForm.value['orderDate'],
       'orderDay': this.getOrderDay(this.orderForm.value['orderDate']),

@@ -15,11 +15,16 @@ export class UserOrderHistoryComponent implements OnInit, OnDestroy {
   constructor(public orderService: OrderService) {}
 
   ngOnInit() {
-    this.orders = this.orderService.getOrdersHistory();
+    // this.orders = this.orderService.getOrdersHistory();
+    this.orderService.getOrdersHistory();
     this.orderSubscription = this.orderService.getOrderUpdateListener()
     .subscribe((orderList: Order[]) => {
       this.orders = orderList;
     });
+  }
+
+  getFormattedDate(date: Date): string {
+    return date.toISOString().split('T')[0];
   }
 
   ngOnDestroy(): void {

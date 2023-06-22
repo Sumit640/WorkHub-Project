@@ -7,7 +7,7 @@
     </div>
     <p *ngIf="orders.length === 0">Order History is Empty !!!!</p>
     <div class="order-list-group" *ngIf="orders.length > 0">
-      <div class="order-data" *ngFor="let order of orders">
+      <div class="order-data" *ngFor="let order of orders.reverse()">
         <h3>Order Id: {{ order.orderId }}</h3>
         <h3>Order Date : {{ order.orderDate }}</h3>
         <h3>Order Day : {{ order.orderDay }}</h3>

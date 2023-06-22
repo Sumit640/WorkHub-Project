@@ -2,10 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('../config/config');
 const bcrpyt = require('bcryptjs');
-const User = require("./models/userRegister");
 const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 3000;
+
 const checkAuth = require('./middleware/checkAuthentication');
+const User = require("./models/userRegister");
+const Order = require("./models/order");
 
 const connectionParams = {
   useNewUrlParser: true,
@@ -108,6 +110,30 @@ app.post("/userLogin",(req,res,next) => {
   });
 });
 
+app.post("/api/orders",(req,res) => {
+  const orders = new Order({
+    employeeId: req.body.employeeId,
+    orderDate: req.body.orderDate,
+    orderDay: req.body.orderDay,
+    lunchType: req.body.lunchType,
+    breakfastType: req.body.breakfastType
+  });
+  console.log(orders);
+  orders.save();
+  res.status(201).json({
+    message: 'Order added succesfully'
+  });
+});
 
+app.get("/api/orders",(req,res) => {
+  Order.find()
+  .then((orders) => {
+    console.log(orders);
+    res.status(200).json({
+      message: 'Order submitted succesfully',
+      orders: orders
+    });
+  });
+});
 
 module.exports = app;
