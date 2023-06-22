@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../order.service';
 
@@ -7,7 +7,7 @@ import { OrderService } from '../order.service';
   templateUrl: './user-food-order.component.html',
   styleUrls: ['./user-food-order.component.css']
 })
-export class UserFoodOrderComponent {
+export class UserFoodOrderComponent implements OnInit {
   initialDate = new Date();
   orderId: string;
   orderForm: FormGroup;

@@ -8,13 +8,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Input() selectFeatureHeader = 'home';
   userAuthenticated: boolean = false;
   private authListenerSubscription: Subscription; 
 
   constructor(private authService: AuthService) {}
-
-  @Output() featureSelected = new EventEmitter<string>();
 
   ngOnInit() {
     this.authListenerSubscription = this.authService
@@ -28,8 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
      this.authListenerSubscription.unsubscribe(); 
   }
 
-  onSelect(feature: string) {
-    // this.selectFeatureHeader = feature;
-    this.featureSelected.emit(feature);
+  onLogout() {
+    this.authService.logout();
   }
+
 }

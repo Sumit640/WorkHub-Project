@@ -2,29 +2,29 @@
   <div class="container">
     <h2><a>WorkHub</a></h2>
     <nav class="workhub-nav">
-      <h3 *ngIf="userAuthenticated">
+      <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/home']">Home</a>
       </h3>
-      <h3 *ngIf="userAuthenticated">
+      <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/about']">About</a>
       </h3>
-      <h3 *ngIf="userAuthenticated">
+      <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/login']">Login</a>
       </h3>
-      <h3 *ngIf="userAuthenticated">
+      <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/register']">Register</a>
       </h3>
-      <h3 *ngIf="!userAuthenticated">
+      <h3 *ngIf="userAuthenticated">
         <a [routerLink]="['/user/statistics']">Statistics</a>
       </h3>
-      <h3 *ngIf="!userAuthenticated">
+      <h3 *ngIf="userAuthenticated">
         <a [routerLink]="['/user/order']">Order</a>
       </h3>
-      <h3 *ngIf="!userAuthenticated">
+      <h3 *ngIf="userAuthenticated">
         <a [routerLink]="['/user/history']">History</a>
       </h3>
-      <h3 *ngIf="!userAuthenticated">
-        <a [routerLink]="['/user/logout']">Logout</a>
+      <h3 *ngIf="userAuthenticated">
+        <a (click)="onLogout()">Logout</a>
       </h3>
     </nav>
   </div>

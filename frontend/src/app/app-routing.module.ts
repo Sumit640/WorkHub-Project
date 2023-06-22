@@ -7,6 +7,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserOrderStatisticsComponent } from './user-order-statistics/user-order-statistics.component';
 import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
 import { UserFoodOrderComponent } from './user-food-order/user-food-order.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,9 +15,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
-  { path: 'user/statistics', component: UserOrderStatisticsComponent },
-  { path: 'user/history', component: UserOrderHistoryComponent },
-  { path: 'user/order', component: UserFoodOrderComponent }
+  { path: 'user/statistics', component: UserOrderStatisticsComponent, canActivate: [AuthGuard] },
+  { path: 'user/history', component: UserOrderHistoryComponent, canActivate: [AuthGuard] },
+  { path: 'user/order', component: UserFoodOrderComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

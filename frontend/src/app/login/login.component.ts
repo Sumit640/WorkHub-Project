@@ -8,13 +8,16 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  isCorrect = true;
 
   constructor(public authService: AuthService) {}
 
   onSubmitLogin(form: NgForm) {
-    if(form.invalid)
+    if(form.invalid){
+      this.isCorrect = false;
       return;
-
-    this.authService.loginAuth(form.value.username,form.value.password);
+    }
+    else
+      this.authService.loginAuth(form.value.username,form.value.password);
   }
 }

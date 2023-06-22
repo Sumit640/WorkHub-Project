@@ -21,7 +21,7 @@
           </div>
         </div>
       </form>
-      <p class="invalid" *ngIf="!loginForm.valid && loginForm.touched">Incorrect Login Details!!</p>
+      <p class="invalid" *ngIf="(!username.valid && username.touched) && (!password.valid && password.touched)">Incorrect Login Details!!</p>
     </div>
   </div>
 </div>

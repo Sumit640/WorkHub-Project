@@ -3,6 +3,7 @@ import { Order } from "./order.model";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { ActivatedRoute, Router } from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
@@ -37,10 +38,10 @@ export class OrderService {
 
   addOrder(newOrder: Order) {
     this.http.post<{message: string}>('http://localhost:3000/api/orders',newOrder)
-      .subscribe((orderResponse) => {
-        console.log(orderResponse);
-        this.orders.push(newOrder);
-        this.orderUpdated.next([...this.orders]);
-      });
+    .subscribe((orderResponse) => {
+      console.log(orderResponse);
+      this.orders.push(newOrder);
+      this.orderUpdated.next([...this.orders]);
+    });
   }
 }
