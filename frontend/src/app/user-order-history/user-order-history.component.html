@@ -5,15 +5,16 @@
     <div class="order-heading">
       <h2>Order History</h2>
     </div>
-    <p>Order History is Empty !!!!</p>
-    <div class="order-list-group" >
-      <div class="order-data">
-        <h3>Order Id: </h3>
-        <h3>Order Date : </h3>
-        <h3>Order Day : </h3>
-        <h3>Breakfast : </h3>
-        <h3>Lunch : </h3>
+    <p *ngIf="orders.length === 0">Order History is Empty !!!!</p>
+    <div class="order-list-group" *ngIf="orders.length > 0">
+      <div class="order-data" *ngFor="let order of orders">
+        <h3>Order Id: {{ order.orderId }}</h3>
+        <h3>Order Date : {{ order.orderDate }}</h3>
+        <h3>Order Day : {{ order.orderDay }}</h3>
+        <h3>Breakfast : {{ order.breakfastType }}</h3>
+        <h3>Lunch : {{ order.lunchType }}</h3>        
+        <button class="hist-btn" type="button">Edit</button>
       </div>
-  </div>
     </div>
+  </div>
 </div>

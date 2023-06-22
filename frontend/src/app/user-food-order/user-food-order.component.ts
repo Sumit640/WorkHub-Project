@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-user-food-order',
@@ -9,9 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UserFoodOrderComponent {
   initialDate = new Date();
   orderId: string;
-  orderDate: Date;
   orderForm: FormGroup;
-  // constructor(private orderHistoryService: OrderHistoryService) {}
+
+  constructor(public orderService: OrderService) {}
 
   ngOnInit() {
     this.orderId = 'E11' + Math.floor(Math.random()*1000);
@@ -29,7 +30,7 @@ export class UserFoodOrderComponent {
     return nextDate;
   }
 
-  getOrderDay(orderDate: string): string {
+  getOrderDay(orderDate: Date): string {
     const date = new Date(orderDate); 
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const orderDay = daysOfWeek[date.getDay()]; 
@@ -38,13 +39,17 @@ export class UserFoodOrderComponent {
   }
 
   onOrderSubmit() {
+    const newOrder = {
+      'orderId': this.orderId,
+      'orderDate': this.orderForm.value['orderDate'],
+      'orderDay': this.getOrderDay(this.orderForm.value['orderDate']),
+      'breakfastType': this.orderForm.value['breakfastType'],
+      'lunchType': this.orderForm.value['lunchType']
+    };
 
-    // this.orderHistoryService.orderHistory.push({
-    //   'orderDate': this.orderForm.value['orderDate'],
-    //   'orderDay': this.getOrderDay(this.orderForm.value['orderDate']),
-    //   'orderId': this.orderId,
-    //   'breakfastType': this.orderForm.value['breakfastType'],
-    //   'lunchType': this.orderForm.value['lunchType']
-    // })
+    this.orderService.addOrder(newOrder);
+    this.orderForm.reset();
   }
+
+
 }
