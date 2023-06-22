@@ -1,4 +1,3 @@
-
 export interface AuthData {
   name: string,
   employeeId: string,

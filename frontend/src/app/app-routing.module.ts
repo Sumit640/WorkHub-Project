@@ -4,13 +4,19 @@ import { FacilityComponent } from './facility/facility.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { UserOrderStatisticsComponent } from './user-order-statistics/user-order-statistics.component';
+import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
+import { UserFoodOrderComponent } from './user-food-order/user-food-order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: FacilityComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterUserComponent }
+  { path: 'register', component: RegisterUserComponent },
+  { path: 'user/statistics', component: UserOrderStatisticsComponent },
+  { path: 'user/history', component: UserOrderHistoryComponent },
+  { path: 'user/order', component: UserFoodOrderComponent },
 ];
 
 @NgModule({

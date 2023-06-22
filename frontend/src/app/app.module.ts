@@ -12,6 +12,12 @@ import { AboutComponent } from './about/about.component';
 import { FacilityComponent } from './facility/facility.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { AuthInterceptor } from './auth-interceptor';
+import { UserOrderStatisticsComponent } from './user-order-statistics/user-order-statistics.component';
+import { UserFoodOrderComponent } from './user-food-order/user-food-order.component';
+import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
+import { OrderChartViewComponent } from './user-order-statistics/order-chart-view/order-chart-view.component';
+import { OrderTabularViewComponent } from './user-order-statistics/order-tabular-view/order-tabular-view.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { AuthInterceptor } from './auth-interceptor';
     FooterComponent,
     AboutComponent,
     FacilityComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    UserFoodOrderComponent,
+    UserOrderStatisticsComponent,
+    UserOrderHistoryComponent,
+    OrderChartViewComponent,
+    OrderTabularViewComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
