@@ -1,0 +1,31 @@
+/* Tabular View */
+.tabular-view {
+  background-color: rgb(219, 194, 198);
+  margin: 1rem;
+  min-height: 50vh;
+}
+
+.tabular-view .tabular-timeline {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.tabular-timeline label {
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+.tabular-timeline input[type='date'] {
+  width: 10vw;
+  height: 5vh;
+  border-radius: 5px;
+  outline-width: none;
+}
+
+.tabular-display {
+  border: 1px solid black;
+  min-height: 50vh;
+  margin: 1rem;
+}

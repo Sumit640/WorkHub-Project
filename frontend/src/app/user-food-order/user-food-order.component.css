@@ -1,0 +1,73 @@
+#food-order {
+  position: relative;
+  background: var(--primary-color);
+  color: #fff;
+  min-height: 50vh;
+  max-width: 50%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  padding: 1rem 0;
+}
+
+
+#food-order .food-order-heading h2 {
+  margin: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+  border: 2px solid white;
+}
+
+#food-order form .food-order-detail {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: .5rem 0;
+  font-size: 1.5rem;
+  border: 2px solid white;
+}
+
+.food-order-detail .order-date, 
+.food-order-detail .order-type {
+  display: flex;
+  padding: 1rem;
+}
+
+.food-order-detail .order-type .order-select,
+.food-order-detail .order-type .order-breakfast,
+.food-order-detail .order-type .order-lunch {
+  width: 10vw;
+}
+
+.food-order-detail .order-date select[type='date'],
+.food-order-detail .order-type .order-breakfast-type,
+.food-order-detail .order-type .order-lunch-type {
+  margin: 0 1rem;
+  width: 20vw;
+  border-radius: 5px;
+}
+
+.food-order-detail .order-type .order-breakfast-type,
+.food-order-detail .order-type .order-lunch-type {
+  display: flex;
+  align-items: center;
+}
+
+.food-order-detail .order-type .order-breakfast-type input[type='radio'],
+.food-order-detail .order-type .order-lunch-type input[type='radio'] {
+  margin: 0 1rem;
+}
+
+.order-list-group {
+  border: 2px solid black;
+}
+
+.order-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.order-submit .btn{
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: .75rem 2rem;
+}

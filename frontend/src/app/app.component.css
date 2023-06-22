@@ -176,3 +176,60 @@ li {
 }
 
 
+
+
+.workhub-user-profile {
+  position: relative;
+  background: #8282e9;
+  min-height: 30vh;
+  margin: 3rem 0;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  opacity: .8;
+  font-size: 1.5rem;
+  max-width: 45%;
+}
+
+.workhub-user-name {
+  display: flex;
+}
+
+.workhub-user-name h2 {
+  width: 50%;
+}
+
+.workhub-user-name h3 {
+  padding: 1rem;
+  width: 50%;
+}
+
+.workhub-userStats .stats-heading h2 {
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+/* Food Order */
+
+@media (max-width:600px) {
+  .workhub-user-profile {
+    font-size: 1.1rem;
+    height: 65vh;
+    margin: 2rem 0;
+  }
+
+
+  .workhub-user-profile .workhub-user-name h2 {
+    width: 60vw;
+    padding-top: 2rem;
+  }
+
+  .workhub-user-profile .workhub-user-name h3 {
+    padding: 2rem;
+  }
+
+  .workhub-userStats {
+    font-size: 1.5rem;
+  }
+}

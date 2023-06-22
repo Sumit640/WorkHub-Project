@@ -1,0 +1,30 @@
+.workhub-userStats .chart-view {
+  border: 1px solid black;
+  margin: 1rem;
+  min-height: 50vh;
+}
+
+.chart-view .chart-timeline {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.chart-timeline label {
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+.chart-timeline input[type='date'] {
+  width: 10vw;
+  height: 5vh;
+  border-radius: 5px;
+  outline-width: none;
+}
+
+.chart-display {
+  border: 1px solid black;
+  min-height: 50vh;
+  margin: 1rem;
+}

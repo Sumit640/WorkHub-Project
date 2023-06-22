@@ -1,0 +1,9 @@
+#workhub-stats {
+  background-color: rgb(219, 194, 198);
+}
+
+.workhub-userStats .stats-heading h2 {
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}

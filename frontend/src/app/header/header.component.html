@@ -1,6 +1,6 @@
 <header id="workhub-header">
   <div class="container">
-    <h2><a [routerLink]="['/home']">WorkHub</a></h2>
+    <h2><a>WorkHub</a></h2>
     <nav class="workhub-nav">
       <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/home']">Home</a>
@@ -13,6 +13,18 @@
       </h3>
       <h3 *ngIf="!userAuthenticated">
         <a [routerLink]="['/register']">Register</a>
+      </h3>
+      <h3 *ngIf="userAuthenticated">
+        <a [routerLink]="['/user/statistics']">Statistics</a>
+      </h3>
+      <h3 *ngIf="userAuthenticated">
+        <a [routerLink]="['/user/order']">Order</a>
+      </h3>
+      <h3 *ngIf="userAuthenticated">
+        <a [routerLink]="['/user/history']">History</a>
+      </h3>
+      <h3 *ngIf="userAuthenticated">
+        <a [routerLink]="['/user/logout']">Logout</a>
       </h3>
     </nav>
   </div>

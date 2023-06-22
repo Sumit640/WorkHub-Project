@@ -1,1 +1,58 @@
-<p>user-food-order works!</p>
+<app-user-profile></app-user-profile>
+
+<div id="food-order">
+  <div class="food-order-heading">
+    <h2>Food Order</h2>
+  </div>
+  <div class="food-order-section">
+    <form [formGroup]="orderForm" (ngSubmit)="onOrderSubmit()">
+      <div class="food-order-detail">
+        <div class="order-date">
+          <label for="orderDate">Select Date : </label>
+          <select type="date" name="orderDate" id="orderDate" formControlName="orderDate">
+            <option [value]="initialDate.toISOString().split('T')[0]">
+              {{ initialDate.toISOString().split('T')[0] }}
+            </option>
+            <option [value]="getNextDate(initialDate, 1).toISOString().split('T')[0]">
+              {{ getNextDate(initialDate, 1).toISOString().split('T')[0] }}
+            </option>
+            <option [value]="getNextDate(initialDate, 1).toISOString().split('T')[0]">
+              {{ getNextDate(initialDate, 2).toISOString().split('T')[0] }}
+            </option>
+            <option [value]="getNextDate(initialDate, 1).toISOString().split('T')[0]">
+              {{ getNextDate(initialDate, 3).toISOString().split('T')[0] }}
+            </option>
+            <option [value]="getNextDate(initialDate, 1).toISOString().split('T')[0]">
+              {{ getNextDate(initialDate, 4).toISOString().split('T')[0] }}
+            </option>
+          </select>
+        </div>
+        <div class="order-type">
+          <div class="order-breakfast">
+            <label for="breakfastType">Breakfast : </label>
+          </div>
+          <div class="order-breakfast-type">
+            <input type="radio" name="breakfastType" id="breakfast-veg" value="breakfast-veg" formControlName="breakfastType">
+            <label for="breakfast-veg">Breakfast-Veg</label>
+          </div>
+        </div>
+        <div class="order-type">
+          <div class="order-lunch">
+            <label for="lunchType">Lunch : </label>
+          </div>
+          <div class="order-lunch-type">
+            <input type="radio" name="lunchType" id="lunch-veg" value="lunch-veg" formControlName="lunchType">
+            <label for="lunch-veg">Lunch-Veg</label>
+          </div>
+          <div class="order-lunch-type">
+            <input type="radio" name="lunchType" id="lunch-nonveg" value="lunch-nonveg" formControlName="lunchType">
+            <label for="lunch-nonveg">Lunch-NonVeg</label>
+          </div>
+        </div>
+        <div class="order-submit">
+          <button class="btn" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
