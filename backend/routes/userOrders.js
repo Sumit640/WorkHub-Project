@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require("../src/models/order");
 const checkAuth = require('../src/middleware/checkAuthentication');
 
-router.post("",checkAuth,(req,res) => {
+router.post("",(req,res) => {
   const orders = new Order({
     employeeId: req.body.employeeId,
     orderDate: req.body.orderDate,
@@ -18,10 +18,9 @@ router.post("",checkAuth,(req,res) => {
   });
 });
 
-router.get("",checkAuth,(req,res) => {
+router.get("",(req,res) => {
   Order.find()
   .then((orders) => {
-    console.log(orders);
     res.status(200).json({
       message: 'Order submitted succesfully',
       orders: orders
