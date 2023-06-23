@@ -75,6 +75,7 @@ app.post("/userLogin",(req,res,next) => {
   let fetchedUser;
   User.findOne({employeeId: req.body.employeeId})
   .then(user => {
+    console.log(user);
     if(!user) {    // if user doesn't exist
       return res.status(401).json({
         message: 'Authentication failed!!'
@@ -91,15 +92,15 @@ app.post("/userLogin",(req,res,next) => {
       });
     }
 
-    const token = jwt.sign(
-      {employeeId: fetchedUser.employeeId,userId: fetchedUser._id},
-      config.jwt_password,
-      { expiresIn: "1h"}
-    )
+    const token = jwt.sign({
+      employeeId: fetchedUser.employeeId,
+      userId: fetchedUser._id
+    },config.jwt_password,{ expiresIn: "1h"});
     
     res.status(200).json({
       token: token,
-      expiresIn: 3600
+      expiresIn: 3600,
+      userData: fetchedUser
     });
   })
   .catch(err => {
@@ -108,7 +109,6 @@ app.post("/userLogin",(req,res,next) => {
     });
   });
 });
-
 
 app.use("/api/orders",OrderRoutes);
 

@@ -3,7 +3,8 @@ const router = express.Router();
 const Order = require("../src/models/order");
 const checkAuth = require('../src/middleware/checkAuthentication');
 
-router.post("",(req,res) => {
+router.post("",
+  checkAuth,(req,res) => {
   const orders = new Order({
     employeeId: req.body.employeeId,
     orderDate: req.body.orderDate,
@@ -11,7 +12,7 @@ router.post("",(req,res) => {
     lunchType: req.body.lunchType,
     breakfastType: req.body.breakfastType
   });
-  console.log(orders);
+
   orders.save();
   res.status(201).json({
     message: 'Order added succesfully'

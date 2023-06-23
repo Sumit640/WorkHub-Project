@@ -11,12 +11,23 @@ export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false;
+  private userInfo: any;
   private tokenTimer: any;
 
   constructor(private http: HttpClient,private router:Router) {}
 
   getToken() {
     return this.token;
+  }
+
+  getUserInfo() {
+    this.userInfo = localStorage.getItem('userDetail');
+    return JSON.parse(this.userInfo);
+  }
+
+  getEmployeeId() {
+    this.userInfo = localStorage.getItem('userDetail');
+    return JSON.parse(this.userInfo).employeeId;
   }
 
   getIsAuth() {
@@ -54,11 +65,10 @@ export class AuthService {
       password: password
     };
 
-    this.http.post
-    ("http://localhost:3000/userRegister",newAuthData)
-    .subscribe(response => {
-      console.log(response);
-    });
+    this.http.post("http://localhost:3000/userRegister",newAuthData)
+      .subscribe(response => {
+        console.log(response);
+      });
   }
 
   loginAuth(eId: string,password: string) {
@@ -66,7 +76,7 @@ export class AuthService {
       employeeId: eId,
       password: password,
     };
-    this.http.post<{token: string,expiresIn: number}>("http://localhost:3000/userLogin",newAuthLogin)
+    this.http.post<{token: string,expiresIn: number, userData: any}>("http://localhost:3000/userLogin",newAuthLogin)
     .subscribe(response => {
       const tokenExtracted = response.token;
       this.token = tokenExtracted;
@@ -74,6 +84,7 @@ export class AuthService {
         const tokenExpiryDuration = response.expiresIn;
         this.setAuthenticationTimer(tokenExpiryDuration);
 
+        localStorage.setItem('userDetail',JSON.stringify(response.userData));
         this.isAuthenticated = true;
         this.authStatusListener.next(true);
 
@@ -92,6 +103,7 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['/']);
+    localStorage.removeItem('userDetail');
     this.clearAuthenticationData();
     clearTimeout(this.tokenTimer);
   }

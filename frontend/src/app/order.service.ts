@@ -4,19 +4,24 @@ import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from "./auth.service";
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   private orders: Order[] = [];
+  employeeId: string;
   private orderUpdated = new Subject<Order[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authService: AuthService) {}
 
   getOrdersHistory() {
+    this.employeeId = this.authService.getEmployeeId();
     this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders')
     .pipe(map((orderData) => {
-      return orderData.orders.map(order => {
+      return orderData.orders
+        .filter(order => order.employeeId === this.employeeId)
+        .map(order => {
         return {
           orderId: order._id,
           orderDate: order.orderDate,

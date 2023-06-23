@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../order.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-user-food-order',
@@ -12,10 +13,10 @@ export class UserFoodOrderComponent implements OnInit {
   orderId: string;
   orderForm: FormGroup;
 
-  constructor(public orderService: OrderService) {}
+  constructor(public orderService: OrderService,private authService: AuthService) {}
 
   ngOnInit() {
-    this.orderId = 'E11' + Math.floor(Math.random()*1000);
+    this.orderId = this.authService.getEmployeeId() + Math.floor(Math.random()*1000);
 
     this.orderForm = new FormGroup({
       'orderDate' : new FormControl(null,Validators.required),
@@ -40,7 +41,7 @@ export class UserFoodOrderComponent implements OnInit {
 
   onOrderSubmit() {
     const newOrder = {
-      'employeeId': 'E11',
+      'employeeId': this.authService.getEmployeeId(),
       'orderId': this.orderId,
       'orderDate': this.orderForm.value['orderDate'],
       'orderDay': this.getOrderDay(this.orderForm.value['orderDate']),
