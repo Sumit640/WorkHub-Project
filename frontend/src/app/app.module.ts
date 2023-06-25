@@ -18,6 +18,7 @@ import { UserOrderHistoryComponent } from './user-order-history/user-order-histo
 import { OrderChartViewComponent } from './user-order-statistics/order-chart-view/order-chart-view.component';
 import { OrderTabularViewComponent } from './user-order-statistics/order-tabular-view/order-tabular-view.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [

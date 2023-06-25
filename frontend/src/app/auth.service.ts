@@ -11,6 +11,8 @@ export class AuthService {
   private token: string;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false;
+  registerError: boolean;
+  loginError: boolean = false;
   private userInfo: any;
   private tokenTimer: any;
 
@@ -66,8 +68,9 @@ export class AuthService {
     };
 
     this.http.post("http://localhost:3000/userRegister",newAuthData)
-      .subscribe(response => {
-        console.log(response);
+      .subscribe({
+        next: () => { alert("Successfully registered at WorkHub!!"); },
+        error: () => { alert("Given Data already registered!!"); }
       });
   }
 
@@ -77,24 +80,27 @@ export class AuthService {
       password: password,
     };
     this.http.post<{token: string,expiresIn: number, userData: any}>("http://localhost:3000/userLogin",newAuthLogin)
-    .subscribe(response => {
-      const tokenExtracted = response.token;
-      this.token = tokenExtracted;
-      if(this.token) {
-        const tokenExpiryDuration = response.expiresIn;
-        this.setAuthenticationTimer(tokenExpiryDuration);
+    .subscribe({
+      next : response => {
+        const tokenExtracted = response.token;
+        this.token = tokenExtracted;
+        if(this.token) {
+          const tokenExpiryDuration = response.expiresIn;
+          this.setAuthenticationTimer(tokenExpiryDuration);
 
-        localStorage.setItem('userDetail',JSON.stringify(response.userData));
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
+          localStorage.setItem('userDetail',JSON.stringify(response.userData));
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
 
-        const currentDate = new Date();
-        const expirationDate = new Date(currentDate.getTime() + tokenExpiryDuration*1000);
+          const currentDate = new Date();
+          const expirationDate = new Date(currentDate.getTime() + tokenExpiryDuration*1000);
 
-        // console.log(expirationDate);
-        this.saveAuthenticationData(this.token,expirationDate);
-        this.router.navigate(['/','user','statistics']);
-      }
+          // console.log(expirationDate);
+          this.saveAuthenticationData(this.token,expirationDate);
+          this.router.navigate(['/','user','statistics']);
+        }
+      },
+      error: () => { alert("Enter correct Login Details"); }
     });
   }
 
@@ -131,8 +137,6 @@ export class AuthService {
   }
 
   private setAuthenticationTimer(duration: number) {   // duration is in seconds
-    console.log("Duration: " + duration);
-    
     this.tokenTimer = setTimeout(() => {
       this.logout();
     },duration*1000);

@@ -10,10 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterUserComponent {
 
-  // @ViewChild('registerForm') registerForm: NgForm;
-
-  constructor(private router: Router,
-    private route: ActivatedRoute,
+  constructor(private router: Router,private route: ActivatedRoute,
     public authService: AuthService) {}
 
   onSubmitRegister(form: NgForm) {
@@ -23,7 +20,6 @@ export class RegisterUserComponent {
 
     this.authService.createUser(form.value.name,form.value.username,form.value.role,form.value.email,form.value.password);
 
-    alert("Successfully registered at WorkHub!!");
     setTimeout(() => {
       this.router.navigate(['../','login'],{relativeTo: this.route});
     }, 1000);
