@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth-files/auth.service';
 
 @Component({
   selector: 'app-register-user',

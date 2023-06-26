@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../order.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth-files/auth.service';
 
 @Component({
   selector: 'app-user-food-order',

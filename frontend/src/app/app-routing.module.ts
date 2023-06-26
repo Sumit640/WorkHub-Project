@@ -7,7 +7,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserOrderStatisticsComponent } from './user-order-statistics/user-order-statistics.component';
 import { UserOrderHistoryComponent } from './user-order-history/user-order-history.component';
 import { UserFoodOrderComponent } from './user-food-order/user-food-order.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './auth-files/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},

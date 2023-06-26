@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../auth-files/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
       this.isCorrect = false;
       return;
     }
-    else
-      this.authService.loginAuth(form.value.username,form.value.password);
+    
+    this.authService.loginAuth(form.value.username,form.value.password);
   }
 }

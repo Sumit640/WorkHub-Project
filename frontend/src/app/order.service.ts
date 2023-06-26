@@ -3,8 +3,7 @@ import { Order } from "./order.model";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthService } from "./auth.service";
+import { AuthService } from "../app/auth-files/auth.service";
 @Injectable({
   providedIn: 'root'
 })
