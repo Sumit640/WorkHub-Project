@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { AuthData, AuthLogin } from "./auth-data.model";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,7 @@ export class AuthService {
       password: password
     };
 
-    this.http.post("http://localhost:3000/userRegister",newAuthData)
+    this.http.post(environment.apiUrl + "userRegister",newAuthData)
       .subscribe({
         next: () => { alert("Successfully registered at WorkHub!!"); },
         error: () => { alert("Given Data already registered!!"); }
@@ -79,7 +80,7 @@ export class AuthService {
       employeeId: eId,
       password: password,
     };
-    this.http.post<{token: string,expiresIn: number, userData: any}>("http://localhost:3000/userLogin",newAuthLogin)
+    this.http.post<{token: string,expiresIn: number, userData: any}>(environment.apiUrl + "userLogin",newAuthLogin)
     .subscribe({
       next : response => {
         const tokenExtracted = response.token;

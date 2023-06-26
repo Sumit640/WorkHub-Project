@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { AuthService } from "../app/auth-files/auth.service";
+import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class OrderService {
 
   getOrdersHistory() {
     this.employeeId = this.authService.getEmployeeId();
-    this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders')
+    this.http.get<{message: string,orders: any}>(environment.apiUrl + "orders")
     .pipe(map((orderData) => {
       return orderData.orders
         .filter(order => order.employeeId === this.employeeId)
@@ -41,7 +42,7 @@ export class OrderService {
   }
 
   addOrder(newOrder: Order) {
-    this.http.post<{message: string}>('http://localhost:3000/api/orders',newOrder)
+    this.http.post<{message: string}>(environment.apiUrl + "orders",newOrder)
     .subscribe((orderResponse) => {
       console.log(orderResponse);
       this.orders.push(newOrder);

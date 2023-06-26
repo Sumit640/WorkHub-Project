@@ -39,10 +39,10 @@ app.listen(port,() => {
 });
 
 // Register Route
-app.post("/userRegister",UserController.createUser);
+app.post("/api/userRegister",UserController.createUser);
 
 // Login Route
-app.post("/userLogin",UserController.userLogin);
+app.post("/api/userLogin",UserController.userLogin);
 
 // Order Routes
 app.use("/api/orders",OrderRoutes);
