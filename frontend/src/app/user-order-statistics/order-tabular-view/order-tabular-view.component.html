@@ -2,14 +2,38 @@
   <div class="tabular-timeline">
     <div class="tabular-timeline-start">
       <label for="start-date">Start Date</label>
-      <input type="date" name="start-date" id="start-date">
+      <input (change)="updateStartDate()" type="date" name="start-date" id="start-date" [(ngModel)]="startdate">
     </div>
     <div class="tabular-timeline-end">
-      <label for="start-date">End Date</label>
-      <input type="date" name="start-date" id="start-date">
+      <label for="end-date">End Date</label>
+      <input (change)="updateEndDate()" type="date" name="end-date" id="end-date" [(ngModel)]="enddate">
     </div>
   </div>
   <div class="tabular-display">
+    <table mat-table [dataSource]="filteredOrders" class="mat-elevation-z8">
+    
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderDate.substring(0,10)}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="order-details">
+        <th mat-header-cell *matHeaderCellDef> Order Details </th>
+        <td mat-cell *matCellDef="let element"> {{element.breakfastType}} {{element.lunchType}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="breakfast">
+        <th mat-header-cell *matHeaderCellDef> Breakfast </th>
+        <td mat-cell *matCellDef="let element"> {{element.breakfastType === '' ? '☒' : '☑'}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="lunch">
+        <th mat-header-cell *matHeaderCellDef> Lunch </th>
+        <td mat-cell *matCellDef="let element"> {{element.lunchType === '' ? '☒' : '☑'}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>    
   </div>
 </div>

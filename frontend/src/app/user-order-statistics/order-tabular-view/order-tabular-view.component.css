@@ -29,3 +29,8 @@
   min-height: 50vh;
   margin: 1rem;
 }
+
+table {
+  width: 100%;
+  font-size: 1.2rem;
+}
