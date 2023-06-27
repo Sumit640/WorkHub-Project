@@ -1,8 +1,7 @@
 /* Tabular View */
+
 .tabular-view {
-  background-color: rgb(219, 194, 198);
   margin: 1rem;
-  min-height: 50vh;
 }
 
 .tabular-view .tabular-timeline {
@@ -25,12 +24,13 @@
 }
 
 .tabular-display {
-  border: 1px solid black;
-  min-height: 50vh;
-  margin: 1rem;
+  margin: 1rem 1.5rem;
 }
 
 table {
   width: 100%;
-  font-size: 1.2rem;
+}
+
+mat-paginator {
+  width: 100%;
 }

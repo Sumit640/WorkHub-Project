@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { Order } from 'src/app/order.model';
 import { OrderService } from 'src/app/order.service';
@@ -15,6 +16,10 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
   private orderSubscription: Subscription;
   startdate: string = '';
   enddate: string = '';
+  totalOrders = 10;
+  pageSizeOptions = [2,5,10,20];
+  ordersPerPage = 2;
+  currentPage = 1;
 
   constructor(public orderService: OrderService,
     public datePipe: DatePipe) {}
@@ -26,7 +31,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
     this.startdate = this.datePipe.transform(today, "yyyy-MM-dd");
     this.enddate = this.datePipe.transform(sevenDaysAfter, "yyyy-MM-dd");
 
-    this.orderService.getOrdersHistory();
+    this.orderService.getOrdersHistory(this.ordersPerPage,1);
     this.orderSubscription = this.orderService.getOrderUpdateListener()
     .subscribe((orderList: Order[]) => {
       this.orders = orderList;
@@ -34,6 +39,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
         const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
         return this.startdate <= dateOrder && this.enddate >= dateOrder;
       });
+      // this.totalOrders = this.filteredOrders.length;
     });
   }
 
@@ -45,6 +51,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
+    // this.totalOrders = this.filteredOrders.length;
   }
  
   updateEndDate() {
@@ -55,6 +62,13 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
+    // this.totalOrders = this.filteredOrders.length;
+  }
+
+  onPageChange(data: PageEvent) {
+    this.currentPage = data.pageIndex + 1;
+    this.ordersPerPage = data.pageSize;
+    this.orderService.getOrdersHistory(this.ordersPerPage,this.currentPage);
   }
 
   ngOnDestroy(): void {

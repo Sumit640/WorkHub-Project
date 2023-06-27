@@ -10,13 +10,13 @@ import { Subscription } from 'rxjs';
 })
 export class UserOrderHistoryComponent implements OnInit, OnDestroy {
   public orders: Order[] = [];
+  ordersPerPage = 20;
   private orderSubscription: Subscription;
 
   constructor(public orderService: OrderService) {}
 
   ngOnInit() {
-    // this.orders = this.orderService.getOrdersHistory();
-    this.orderService.getOrdersHistory();
+    this.orderService.getOrdersHistory(this.ordersPerPage,1);
     this.orderSubscription = this.orderService.getOrderUpdateListener()
     .subscribe((orderList: Order[]) => {
       this.orders = orderList;

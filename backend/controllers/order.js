@@ -16,8 +16,16 @@ exports.createOrder = (req,res) => {
 };
 
 exports.getOrder = (req,res) => {
-  Order.find()
-  .then((orders) => {
+  const pageSize = +req.query.pagesize;
+  const currentpage = +req.query.page;
+  const OrderQuery = Order.find();
+  if(pageSize && currentpage) {
+    OrderQuery
+      .skip(pageSize * (currentpage - 1))
+      .limit(pageSize);
+  }
+
+  OrderQuery.then((orders) => {
     res.status(200).json({
       message: 'Order submitted succesfully',
       orders: orders

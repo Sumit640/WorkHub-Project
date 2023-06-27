@@ -14,9 +14,11 @@ export class OrderService {
 
   constructor(private http: HttpClient,private authService: AuthService) {}
 
-  getOrdersHistory() {
+  getOrdersHistory(ordersPerPage: number,currentPage : number) {
+    const queryParams = `?pagesize=${ordersPerPage}&page=${currentPage}`;
     this.employeeId = this.authService.getEmployeeId();
-    this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders')
+    
+    this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders' + queryParams)
     .pipe(map((orderData) => {
       return orderData.orders
         .filter(order => order.employeeId === this.employeeId)
@@ -43,7 +45,6 @@ export class OrderService {
   addOrder(newOrder: Order) {
     this.http.post<{message: string}>('http://localhost:3000/api/orders',newOrder)
     .subscribe((orderResponse) => {
-      console.log(orderResponse);
       this.orders.push(newOrder);
       this.orderUpdated.next([...this.orders]);
     });
