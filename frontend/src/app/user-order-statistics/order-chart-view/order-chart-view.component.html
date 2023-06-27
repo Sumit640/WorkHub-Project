@@ -2,14 +2,18 @@
   <div class="chart-timeline">
     <div class="chart-timeline-start">
       <label for="start-date">Start Date</label>
-      <input type="date" name="start-date" id="start-date">
+      <input (change)="updateStartDate()" type="date" name="start-date" id="start-date" [(ngModel)]="startdate">
     </div>
     <div class="chart-timeline-end">
       <label for="start-date">End Date</label>
-      <input type="date" name="start-date" id="start-date">
+      <input (change)="updateEndDate()" type="date" name="start-date" id="start-date" [(ngModel)]="enddate">
     </div>
   </div>
   <div class="chart-display">
-    
+    <canvas 
+      baseChart
+      [data]="barChartData"
+      [type]="'bar'"
+    ></canvas>
   </div>
 </div>

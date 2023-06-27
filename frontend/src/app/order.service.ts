@@ -14,6 +14,29 @@ export class OrderService {
 
   constructor(private http: HttpClient,private authService: AuthService) {}
 
+  getTotalOrders() {
+    this.employeeId = this.authService.getEmployeeId();
+    
+    this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders')
+    .pipe(map((orderData) => {
+      return orderData.orders
+        .filter(order => order.employeeId === this.employeeId)
+        .map(order => {
+        return {
+          orderId: order._id,
+          orderDate: order.orderDate,
+          orderDay: order.orderDay,
+          breakfastType: order.breakfastType,
+          lunchType: order.lunchType
+        }
+      });
+    }))
+    .subscribe((orderList) => {
+      this.orders = orderList;
+      this.orderUpdated.next([...this.orders]);
+    });
+  }
+
   getOrdersHistory(ordersPerPage: number,currentPage : number) {
     const queryParams = `?pagesize=${ordersPerPage}&page=${currentPage}`;
     this.employeeId = this.authService.getEmployeeId();

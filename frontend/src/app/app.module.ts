@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
@@ -35,6 +36,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgChartsModule
   ],
   declarations: [
     AppComponent,

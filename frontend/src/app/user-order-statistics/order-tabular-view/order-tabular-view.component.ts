@@ -11,14 +11,14 @@ import { OrderService } from 'src/app/order.service';
 })
 export class OrderTabularViewComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['date', 'order-details', 'breakfast', 'lunch'];
-  public orders: Order[] = [];
+  public ordersTable: Order[] = [];
   public filteredOrders: Order[] = [];
   private orderSubscription: Subscription;
   startdate: string = '';
   enddate: string = '';
   totalOrders = 10;
-  pageSizeOptions = [2,5,10,20];
-  ordersPerPage = 2;
+  pageSizeOptions = [5,10,20];
+  ordersPerPage = 10;
   currentPage = 1;
 
   constructor(public orderService: OrderService,
@@ -34,8 +34,8 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
     this.orderService.getOrdersHistory(this.ordersPerPage,1);
     this.orderSubscription = this.orderService.getOrderUpdateListener()
     .subscribe((orderList: Order[]) => {
-      this.orders = orderList;
-      this.filteredOrders = this.orders.filter(order => {
+      this.ordersTable = orderList;
+      this.filteredOrders = this.ordersTable.filter(order => {
         const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
         return this.startdate <= dateOrder && this.enddate >= dateOrder;
       });
@@ -47,22 +47,21 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
     let newDate = new Date(this.startdate);
     this.startdate = this.datePipe.transform(newDate, "yyyy-MM-dd");
 
-    this.filteredOrders = this.orders.filter(order => {
+    this.filteredOrders = this.ordersTable.filter(order => {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
-    // this.totalOrders = this.filteredOrders.length;
+
   }
  
   updateEndDate() {
     let newDate = new Date(this.enddate);
     this.enddate = this.datePipe.transform(newDate, "yyyy-MM-dd");
     
-    this.filteredOrders = this.orders.filter(order => {
+    this.filteredOrders = this.ordersTable.filter(order => {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
-    // this.totalOrders = this.filteredOrders.length;
   }
 
   onPageChange(data: PageEvent) {
