@@ -42,22 +42,32 @@ export class OrderChartViewComponent implements OnInit, OnDestroy {
       const currentDate = new Date(this.startdate);
       const endDate = new Date(this.enddate);
 
-      while (currentDate <= endDate) {
-        const dateString = this.datePipe.transform(new Date(currentDate),"yyyy-MM-dd");
-        this.dateArray.push(dateString);
+      while(currentDate <= endDate){
+        let currentDateString = this.datePipe.transform(currentDate,"yyyy-MM-dd");
+        this.dateArray.push(currentDateString);
+        let order = this.filteredOrders.find(item => {
+          return this.datePipe.transform(item.orderDate,"yyyy-MM-dd") === currentDateString
+        });
+        
+        if(order === undefined) {
+          this.orderArray.push({
+            breakfastVeg: 0,
+            lunchVeg: 0,
+            lunchNonveg: 0
+          });
+        }
+        else {
+          let newOrder : OrderType = {
+            breakfastVeg: 0,
+            lunchVeg: 0,
+            lunchNonveg: 0
+          };
+          newOrder.breakfastVeg = order.breakfastType == 'breakfast-veg' ? 100 : 0;
+          newOrder.lunchVeg = order.lunchType == 'lunch-veg' ? 100 : 0;
+          newOrder.lunchNonveg = order.lunchType == 'lunch-nonveg' ? 100 : 0;
+          this.orderArray.push(newOrder);
+        } 
         currentDate.setDate(currentDate.getDate() + 1);
-      }
-
-      for(let order of this.filteredOrders){
-        let newOrder : OrderType = {
-          breakfastVeg: 0,
-          lunchVeg: 0,
-          lunchNonveg: 0
-        };
-        newOrder.breakfastVeg = order.breakfastType == 'breakfast-veg' ? 100 : 0;
-        newOrder.lunchVeg = order.lunchType == 'lunch-veg' ? 100 : 0;
-        newOrder.lunchNonveg = order.lunchType == 'lunch-nonveg' ? 100 : 0;
-        this.orderArray.push(newOrder);
       }
     });
   }
