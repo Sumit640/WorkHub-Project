@@ -16,7 +16,7 @@ export class UserFoodOrderComponent implements OnInit {
   constructor(public orderService: OrderService,private authService: AuthService) {}
 
   ngOnInit() {
-    this.orderId = this.authService.getEmployeeId() + Math.floor(Math.random()*1000);
+    this.orderId = this.authService.getEmployeeId() + Math.floor(Math.random()*100000);
 
     this.orderForm = new FormGroup({
       'orderDate' : new FormControl(null,Validators.required),
@@ -40,6 +40,7 @@ export class UserFoodOrderComponent implements OnInit {
   }
 
   onOrderSubmit() {
+    console.log(this.orderId);
     const newOrder = {
       'employeeId': this.authService.getEmployeeId(),
       'orderId': this.orderId,
@@ -50,6 +51,7 @@ export class UserFoodOrderComponent implements OnInit {
     };
 
     this.orderService.addOrder(newOrder);
+    alert("Order Submitted Successfully, Acknowledgement Id : " + this.orderId);
     this.orderForm.reset();
   }
 

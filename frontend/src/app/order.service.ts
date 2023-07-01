@@ -23,7 +23,7 @@ export class OrderService {
         .filter(order => order.employeeId === this.employeeId)
         .map(order => {
         return {
-          orderId: order._id,
+          orderId: order.orderId,
           orderDate: order.orderDate,
           orderDay: order.orderDay,
           breakfastType: order.breakfastType,
@@ -47,7 +47,7 @@ export class OrderService {
         .filter(order => order.employeeId === this.employeeId)
         .map(order => {
         return {
-          orderId: order._id,
+          orderId: order.orderId,
           orderDate: order.orderDate,
           orderDay: order.orderDay,
           breakfastType: order.breakfastType,

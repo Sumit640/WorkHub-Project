@@ -2,6 +2,7 @@ const Order = require("../src/models/order");
 
 exports.createOrder = (req,res) => {
   const orders = new Order({
+    orderId: req.body.orderId,
     employeeId: req.body.employeeId,
     orderDate: req.body.orderDate,
     orderDay: req.body.orderDay,
