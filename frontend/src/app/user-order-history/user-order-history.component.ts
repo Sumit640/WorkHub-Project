@@ -22,8 +22,8 @@ export class UserOrderHistoryComponent implements OnInit, OnDestroy {
     });
   }
 
-  getFormattedDate(date: Date): string {
-    return date.toISOString().split('T')[0];
+  getFormattedDate(date: any): string {
+    return date.substring(0,10);
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,6 @@
 <app-user-profile></app-user-profile>
 
-<div id="workhub-desc">
+<div id="workhub-history">
   <div class="workhub-orderStats">
     <div class="order-heading">
       <h2>Order History</h2>
@@ -9,10 +9,10 @@
     <div class="order-list-group" *ngIf="orders.length > 0">
       <div class="order-data" *ngFor="let order of orders.reverse()">
         <h3>Order Id: {{ order.orderId }}</h3>
-        <h3>Order Date : {{ order.orderDate }}</h3>
+        <h3>Order Date : {{ getFormattedDate(order.orderDate) }}</h3>
         <h3>Order Day : {{ order.orderDay }}</h3>
-        <h3>Breakfast : {{ order.breakfastType }}</h3>
-        <h3>Lunch : {{ order.lunchType }}</h3>        
+        <h3>BreakfastType : {{ order.breakfastType }}</h3>
+        <h3>LunchType : {{ order.lunchType }}</h3>        
         <!-- <button class="hist-btn" type="button">Edit</button> -->
       </div>
     </div>

@@ -26,5 +26,6 @@
 .chart-display {
   border: 1px solid black;
   min-height: 50vh;
-  margin: 1rem;
+  width: 80%;
+  margin: 1rem auto;
 }

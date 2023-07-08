@@ -1,12 +1,17 @@
-.order-data {
-  border: 1px solid black;
-  margin: 1rem;
+#workhub-history {
+  background-color: rgb(225, 244, 244);
 }
 
-.hist-btn {
-  width: 15vw;
-  border-radius: 10px;
-  color: white;
-  padding: .5rem;
-  margin: 1rem .5rem;
+.order-data {
+  border: 2px solid black;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin: 1rem 2rem;
 }
+
+.order-heading h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 10px 0;
+}
+

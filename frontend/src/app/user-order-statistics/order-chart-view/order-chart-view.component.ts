@@ -18,6 +18,10 @@ export class OrderChartViewComponent implements OnInit, OnDestroy {
   public barChartData: ChartConfiguration<'bar'>['data'] = {
     datasets: []
   };
+  public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
   startdate: string = '';
   enddate: string = '';
   orderArray: OrderType[];
@@ -125,25 +129,6 @@ export class OrderChartViewComponent implements OnInit, OnDestroy {
     this.enddate = this.datePipe.transform(newEndDate, "yyyy-MM-dd");
 
     this.filterOrdersByDate();
-  }
-
-  updateDates() {
-    let newStartDate = new Date(this.startdate);
-    let newEndDate = new Date(this.enddate);
-    
-    this.startdate = this.datePipe.transform(newStartDate, "yyyy-MM-dd");
-    this.enddate = this.datePipe.transform(newEndDate, "yyyy-MM-dd");
-
-    this.filteredOrders = this.ordersChart.filter(order => {
-      const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
-      return this.startdate <= dateOrder && this.enddate >= dateOrder;
-    });
-
-    this.initializeOrderData();
-
-    setTimeout(() => {
-      this.createChart(this.orderArray);
-    }, 2000);
   }
 
   ngOnDestroy(): void {

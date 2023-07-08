@@ -10,6 +10,7 @@ import { AuthService } from '../auth-files/auth.service';
 })
 export class UserFoodOrderComponent implements OnInit {
   initialDate = new Date();
+  disabled : boolean;
   orderId: string;
   orderForm: FormGroup;
 
@@ -17,6 +18,7 @@ export class UserFoodOrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderId = this.authService.getEmployeeId() + Math.floor(Math.random()*100000);
+    this.disabled = true;
 
     this.orderForm = new FormGroup({
       'orderDate' : new FormControl(null,Validators.required),
@@ -39,8 +41,11 @@ export class UserFoodOrderComponent implements OnInit {
     return orderDay;
   }
 
+  handleChange() {
+    this.disabled = false;
+  }
+
   onOrderSubmit() {
-    console.log(this.orderId);
     const newOrder = {
       'employeeId': this.authService.getEmployeeId(),
       'orderId': this.orderId,
