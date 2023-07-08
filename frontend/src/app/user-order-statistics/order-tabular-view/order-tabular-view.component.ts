@@ -17,8 +17,8 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
   startdate: string = '';
   enddate: string = '';
   totalOrders = 10;
-  pageSizeOptions = [5,10,20];
-  ordersPerPage = 10;
+  pageSizeOptions = [2,5,10,20];
+  ordersPerPage = 2;
   currentPage = 1;
 
   constructor(public orderService: OrderService,
@@ -39,7 +39,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
         const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
         return this.startdate <= dateOrder && this.enddate >= dateOrder;
       });
-      // this.totalOrders = this.filteredOrders.length;
+      this.totalOrders = this.filteredOrders.length;
     });
   }
 
@@ -51,7 +51,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
-
+    this.totalOrders = this.filteredOrders.length;
   }
  
   updateEndDate() {
@@ -62,6 +62,7 @@ export class OrderTabularViewComponent implements OnInit, OnDestroy {
       const dateOrder = this.datePipe.transform(order.orderDate,"yyyy-MM-dd");
       return this.startdate <= dateOrder && this.enddate >= dateOrder;
     });
+    this.totalOrders = this.filteredOrders.length;
   }
 
   onPageChange(data: PageEvent) {

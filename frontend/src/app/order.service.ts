@@ -8,7 +8,8 @@ import { AuthService } from "../app/auth-files/auth.service";
   providedIn: 'root'
 })
 export class OrderService {
-  private orders: Order[] = [];
+  private ordersChart: Order[] = [];
+  private ordersTable: Order[] = [];
   employeeId: string;
   private orderUpdated = new Subject<Order[]>();
 
@@ -32,14 +33,14 @@ export class OrderService {
       });
     }))
     .subscribe((orderList) => {
-      this.orders = orderList;
-      this.orderUpdated.next([...this.orders]);
+      this.ordersChart = orderList;
+      this.orderUpdated.next([...this.ordersChart]);
     });
   }
 
   getOrdersHistory(ordersPerPage: number,currentPage : number) {
-    const queryParams = `?pagesize=${ordersPerPage}&page=${currentPage}`;
     this.employeeId = this.authService.getEmployeeId();
+    const queryParams = `?&pagesize=${ordersPerPage}&page=${currentPage}`;
     
     this.http.get<{message: string,orders: any}>('http://localhost:3000/api/orders' + queryParams)
     .pipe(map((orderData) => {
@@ -56,8 +57,8 @@ export class OrderService {
       });
     }))
     .subscribe((orderList) => {
-      this.orders = orderList;
-      this.orderUpdated.next([...this.orders]);
+      this.ordersTable = orderList;
+      this.orderUpdated.next([...this.ordersTable]);
     });
   }
 
@@ -68,8 +69,10 @@ export class OrderService {
   addOrder(newOrder: Order) {
     this.http.post<{message: string}>('http://localhost:3000/api/orders',newOrder)
     .subscribe((orderResponse) => {
-      this.orders.push(newOrder);
-      this.orderUpdated.next([...this.orders]);
+      this.ordersChart.push(newOrder);
+      this.ordersTable.push(newOrder);
+      this.orderUpdated.next([...this.ordersChart]);
+      this.orderUpdated.next([...this.ordersTable]);
     });
   }
 }

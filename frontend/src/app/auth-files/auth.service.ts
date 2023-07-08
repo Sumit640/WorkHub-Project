@@ -98,7 +98,10 @@ export class AuthService {
 
           // console.log(expirationDate);
           this.saveAuthenticationData(this.token,expirationDate);
-          this.router.navigate(['/','user','statistics']);
+          setTimeout(() => {
+            this.router.navigate(['/','user','order']);
+          },2000);
+          
         }
       },
       error: () => { alert("Enter correct Login Details"); }
